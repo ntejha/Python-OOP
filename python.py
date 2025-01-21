@@ -49,7 +49,7 @@ car1.describe()
 #                   Allow you to share data among all objects created from that class
 
 # Example 02
-
+'''
 class Student : 
 
     class_year = 2024    # Class variable
@@ -74,3 +74,93 @@ print(student1.name)
 print(student2.name)
 print(student3.name)
 print(student4.name)
+'''
+
+
+
+
+# Inheritance = Allows a class to inherit attributes and methods from another class
+#               Helps with code reusability and extensibility
+#               class Child(Parent)
+
+'''
+class Animal:
+    def __init__(self, name):
+        self.name = name
+        self.isalive = True
+    
+    def eat(self):
+        print(f"{self.name} is eating")
+    
+    def sleep(self):
+        print(f"{self.name} is sleeping")
+
+class Dog(Animal):
+    
+    def speak(self):
+        print("WOOF!!")
+
+class Cat(Animal):
+    def speak(self):
+        print("MEOW!!")
+
+class Mouse(Animal):
+    def speak(self):
+        print("SQUEEK!!")
+
+dog = Dog("Scooby")
+cat = Cat("Garfield")
+mouse = Mouse("Micky")
+
+print(cat.name)
+print(cat.isalive)
+
+cat.eat()
+cat.sleep()
+
+dog.speak()
+
+'''
+
+
+# Multiple Inheritence = inherit from more than one parent class
+#                        C(A,B)
+
+# Multilevel inheritence = inherit from a parent which inherits from another parent
+#                        C(B) <- B(A) <- A
+
+class Animal:
+    def __init__(self,name):
+        self.name = name
+    def eat(self):
+        print(f"This {self.name} is eating")
+    def sleep(self):
+        print(f"this {self.name} is sleeping")
+
+class Prey(Animal):
+    def flee(self):
+        print(f"This {self.name} is fleeing")
+
+class Predator(Animal):
+    def hunt(self):
+        print(f"This {self.name} is hunting")
+
+class Rabit(Prey):
+    pass
+
+class Hawk(Predator):
+    pass
+
+class Fish(Prey, Predator):
+    pass
+
+rabbit = Rabit("Bugs")
+hawk = Hawk("Tony")
+fish = Fish("Nemo")
+
+rabbit.flee()
+hawk.hunt()
+fish.flee()
+fish.hunt()
+rabbit.eat()
+rabbit.sleep()
