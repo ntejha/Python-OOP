@@ -128,7 +128,7 @@ dog.speak()
 
 # Multilevel inheritence = inherit from a parent which inherits from another parent
 #                        C(B) <- B(A) <- A
-
+'''
 class Animal:
     def __init__(self,name):
         self.name = name
@@ -164,3 +164,75 @@ fish.flee()
 fish.hunt()
 rabbit.eat()
 rabbit.sleep()
+
+'''
+
+# Abstract class : A class that cannot be instaniated on its own; Meant to be subclassed.
+#                  They can contain abstract methods, which are declared but have no implmentation
+#                  Abstract class benefits :
+#                     1. Prevents instantiation of the class utslef
+#                     2. Requires children to use inherited abstract methods
+
+'''
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def go(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+class Car(Vehicle):
+    def go(self):
+        print("You drive the car")
+    def stop(self):
+        print("You stop the car")
+
+class Motorcycle(Vehicle):
+    def go(self):
+        print("You ride the motorcycle")
+    def stop(self):
+        print("You stop the motorcycle")
+
+Motorcycle = Motorcycle()
+
+Motorcycle.go()
+'''
+
+
+#super() = function used in a child class to call methods from a parent class (superclass)
+#          Allows you to xtend the functionality of the inherited methods
+
+class Shape:
+    def __init__(self,color,is_filled):
+        self.color = color
+        self.is_filled = is_filled
+
+    def Describe(self):
+        print(f"It is {self.color} and {'filled' if self.is_filled else 'not filled'}")
+
+class Circle(Shape):
+    def __init__(self,color, is_filled, radius):
+        super().__init__(color, is_filled)
+        self.radius = radius
+
+class Square(Shape):
+    def __init__(self, color, is_filled, width):
+        super().__init__(color, is_filled)
+        self.width = width
+
+class Triangle(Shape):
+    def __init__(self, color,is_filled, width, height):
+        super().__init__(color, is_filled)
+        self.width = width
+        self.height = height
+
+
+circle = Circle("red",True,5)
+
+print(circle.color)
+
+circle.Describe()
